@@ -1,0 +1,33 @@
+{
+    "name": "nobody1990/yii2-swoole",
+    "description": "run yii2 in swoole coroutine mode",
+    "keywords": [
+        "yii2",
+        "swoole",
+        "coroutine"
+    ],
+    "type": "yii2-extension",
+    "author": [
+        {
+            "name": "gaozhi",
+            "email": "1035948193@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "yiisoft/yii2": "~2.0.12"
+    },
+    "require-dev": {
+        "eaglewu/swoole-ide-helper": "dev-master",
+        "phpunit/phpunit": "^4.8",
+        "yiisoft/yii2-redis": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "nobody1990\\swoole\\": "src"
+        }
+    },
+    "suggest": {
+        "ext-swoole": "install ext-swoole when use php swoole extension"
+    }
+}
