@@ -1,5 +1,5 @@
 {
-    "name": "nobody1990/yii2-swoole",
+    "name": "nobody/yii2-swoole",
     "description": "run yii2 in swoole coroutine mode",
     "keywords": [
         "yii2",
@@ -24,7 +24,7 @@
     },
     "autoload": {
         "psr-4": {
-            "nobody1990\\swoole\\": "src"
+            "nobody\\swoole\\": "src"
         }
     },
     "suggest": {
