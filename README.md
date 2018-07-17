@@ -9,9 +9,18 @@
 本项目是基于[php-swoole扩展](http://www.swoole.com)协程版本,使yii2项目运行在swoole上的一个方案.  
 通过本项目扩展,可极大的提高原项目并发性.而且可以通过Yii2的全栈框架开发TCP,UDP,WebSocket等网络服务.  
 
+
+## 改动
+
+```
+  改动了websocket 让其同时支持http请求
+  增加tcp服务，逻辑目前跟websocket相同
+```
+
+
 ## 安装
 ```php
-    composer require tsingsun/yii2-swoole
+    composer require nobody/yii2-swoole
 ```
 ## 特点
 
