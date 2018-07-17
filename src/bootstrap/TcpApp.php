@@ -23,6 +23,22 @@ use yii\base\Event;
  */
 class TcpApp extends BaseBootstrap
 {
+    /**
+     * @var string current message route
+     */
+    private $dataRoute;
+    /**
+     * @var mixed current message content
+     */
+    private $dataContent;
+    /**
+     * @var array the format use fd=>controller
+     */
+    private $routes;
+    /**
+     * @var callable handle return data
+     */
+    public $formatData;
 
 	/**
 	 * 接收tcp数据
@@ -43,7 +59,7 @@ class TcpApp extends BaseBootstrap
 		
         file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__. ' fd: '. $fd. ' data: '. $data . PHP_EOL, FILE_APPEND);
 
-		$this->parseFrameProtocol($data);
+		$this->parseFrameProtocol($fd, $data);
 
 		$data = $this->onRequests(null, null);
 
@@ -75,28 +91,25 @@ class TcpApp extends BaseBootstrap
 	 * @TODO需要增加对二进制协议的支持
      * 协议转为路由,如果协议不包含路由信息,则表示在启动类中执行请求业务处理
      * Frame协议为针对Yii MVC方式进行定义
-     * @param Frame $frame
+     * @param $data
      */
-    protected function parseFrameProtocol($frame)
+    protected function parseFrameProtocol($fd, $data)
     {
-        file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__ . ' data: '. $frame->fd . $frame->data . PHP_EOL, FILE_APPEND);
 
-        $data = json_decode($frame->data, true);
+        $data_json = json_decode($data, true);
 
-        file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__ . ' data: '. var_export($data, true) . PHP_EOL, FILE_APPEND);
+        file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__ . ' data: '. var_export($data_json, true) . PHP_EOL, FILE_APPEND);
 
         if (json_last_error() == JSON_ERROR_NONE) {
-            
-            file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__ . ' data: '. var_export($data, true) . PHP_EOL, FILE_APPEND);
 
-            if (isset($data['route']) && isset($data['content'])) {
-                $this->dataRoute = $data['route'];
-                $this->dataContent = $data['content'];
+            if (isset($data_json['route']) && isset($data_json['content'])) {
+                $this->dataRoute = $data_json['route'];
+                $this->dataContent = $data_json['content'];
                 return;
             }
         }
-        $this->dataRoute = $this->routes[$frame->fd] . '/message';
-        $this->dataContent = $frame->data;
+        $this->dataRoute = $this->routes[$fd] . '/message';
+        $this->dataContent = $data;
 
     }
 
@@ -136,49 +149,37 @@ class TcpApp extends BaseBootstrap
     {
         file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__. PHP_EOL, FILE_APPEND);
 
-        // echo __METHOD__. PHP_EOL;
-
-        $app = new Application($this->appConfig);
-
-        $app->getRequest()->setSwooleRequest($request);
-
-        $app->getResponse()->setSwooleResponse($response);
-        $app->on(Application::EVENT_AFTER_RUN, [$this, 'onHandleRequestEnd']);
-
         try {
+            $app = new Application($this->appConfig);
+            
+            $app->request->setPathInfo($this->dataRoute);
+            $app->request->setBodyParams($this->dataContent);
+            $app->request->setQueryParams($this->dataContent);
 
-            $app->beforeRun();
+            $app->on(Application::EVENT_AFTER_RUN, [$this, 'onHandleRequestEnd']);
 
-            $app->state = Application::STATE_BEFORE_REQUEST;
-            $app->trigger(Application::EVENT_BEFORE_REQUEST);
+            $app->state = $app::STATE_BEFORE_REQUEST;
+            $app->trigger($app::EVENT_BEFORE_REQUEST);
 
-            $this->state = Application::STATE_HANDLING_REQUEST;
+            $app->state = $app::STATE_HANDLING_REQUEST;
             $response = $app->handleRequest($app->getRequest());
 
-            $app->state = Application::STATE_AFTER_REQUEST;
-            $app->trigger(Application::EVENT_AFTER_REQUEST);
+            $app->state = $app::STATE_AFTER_REQUEST;
+            $app->trigger($app::EVENT_AFTER_REQUEST);
+            $app->state = $app::STATE_SENDING_RESPONSE;
+            $app->trigger($app::EVENT_AFTER_RUN);
 
-            $app->state = Application::STATE_SENDING_RESPONSE;
+            return $response->data;
 
-            $response->send();
-
-            $app->trigger(Application::EVENT_AFTER_RUN);
-
-            $app->state = Application::STATE_END;
-
-            return $response->exitStatus;
-
-        } catch (ExitException $e) {
-            $app->end($e->statusCode, isset($response) ? $response : null);
-            $app->state = -1;
-            return $e->statusCode;
-        } catch (\Exception $exception) {
-            $app->getErrorHandler()->handleException($exception);
-            $app->state = -1;
-            return false;
-        } catch (\Throwable $throwable) {
-            $app->getErrorHandler()->handleError($throwable->getCode(),$throwable->getMessage(),$throwable->getFile(),$throwable->getLine());
-            return false;
+        } catch (ForbiddenHttpException $fe) {
+            $app->getErrorHandler()->logException($fe);
+            return $fe;
+        } catch (\Exception $e) {
+            $app->getErrorHandler()->logException($e);
+            return $e;
+        } catch (\Throwable $t) {
+            $app->getErrorHandler()->logException($t);
+            return $t;
         }
     }
 

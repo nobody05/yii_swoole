@@ -8,6 +8,7 @@
 
 namespace tsingsun\swoole\server;
 
+use Yii;
 use Swoole\Coroutine;
 use Swoole\Http\Request as SwooleRequest;
 use Swoole\Http\Response as SwooleResponse;
@@ -32,14 +33,11 @@ class HttpServer extends Server
      */
     public function onRequest($request, $response)
     {
-        file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__. PHP_EOL, FILE_APPEND);
 
         $uri = $request->server['request_uri'];
         $file = $this->root . $uri;
 
         $pathinfo = pathinfo($file, PATHINFO_EXTENSION);
-
-        file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__. $file .' **'. $request->server['request_uri']  . PHP_EOL, FILE_APPEND);
 
         if ($uri == '/' or $uri == $this->index or empty($pathinfo)) {
             //无指定扩展名
@@ -82,8 +80,7 @@ class HttpServer extends Server
      */
     protected function handleDynamic($file, SwooleRequest $request, SwooleResponse $response)
     {
-        file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__. PHP_EOL, FILE_APPEND);
-
+        
         if (is_file($file)) {
             $response->header('Content-Type', 'text/html');
             ob_start();

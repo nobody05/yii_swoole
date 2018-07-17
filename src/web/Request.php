@@ -51,16 +51,19 @@ class Request extends \yii\web\Request
      */
     public function resolve()
     {
-        file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__. PHP_EOL, FILE_APPEND);
-
-
         $result = Yii::$app->getUrlManager()->parseRequest($this);
 
-        // var_dump($result);
+        file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__. var_export($result, true). var_export($this->_queryParams, true) . var_export($this->_bodyParams, true) . PHP_EOL, FILE_APPEND);
+
         if ($result !== false) {
             list ($route, $params) = $result;
             if ($this->getQueryParams() === null) {
-                $this->_queryParams = $params;
+                if ($this->getBodyParams() === null) {
+                    $this->_queryParams = $params;
+                } else {
+                    $this->_queryParams = $this->_bodyParams;
+                }
+                // $this->_queryParams = $params;
             } else {
                 $this->_queryParams = $params + $this->_queryParams;
             }
@@ -188,21 +191,51 @@ class Request extends \yii\web\Request
      */
     public function getQueryParams()
     {
-        file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__. PHP_EOL, FILE_APPEND);
+        file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__ .PHP_EOL, FILE_APPEND);
 
-        // echo __METHOD__. PHP_EOL;
-        // var_export($this->swooleRequest, true);
-        // Yii::info(__METHOD__. PHP_EOL);
-        // var_dump(__METHOD__, $this->swooleRequest);
+        // var_dump($this->swooleRequest, $this->_queryParams);
+
         if ($this->_queryParams === null) {
+            // websocket服务没有Request 概念，http有
             if (is_object($this->swooleRequest) && $this->swooleRequest->get) {
                 $this->_queryParams = $this->swooleRequest->get;
+            } else {
+                // WebSocket是通过参数转化成的params
+                if ($this->_bodyParams !== null) {
+                    $this->_queryParams = $this->_bodyParams;
+
+                    return $this->_queryParams;
+                }
             }
-            // $this->_queryParams = $this->swooleRequest->get;
-            // $this->_queryParams = $this->getSwooleRequest()->get;
         }
 
         return $this->_queryParams;
+    }
+
+    /**
+     * Sets the request [[queryString]] parameters.
+     * @param array $values the request query parameters (name-value pairs)
+     * @see getQueryParam()
+     * @see getQueryParams()
+     */
+    public function setQueryParams($values)
+    {
+        $this->_queryParams = $values;
+    }
+
+    /**
+     * Sets the request body parameters.
+     * @param array $values the request body parameters (name-value pairs)
+     * @see getBodyParam()
+     * @see getBodyParams()
+     */
+    public function setBodyParams($values)
+    {
+        file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__. PHP_EOL, FILE_APPEND);
+
+        file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', var_export($values, true). PHP_EOL, FILE_APPEND);
+
+        $this->_bodyParams = $values;
     }
 
     /**

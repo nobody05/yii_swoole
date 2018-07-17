@@ -81,7 +81,7 @@ abstract class BaseBootstrap implements BootstrapInterface
     {
         file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__. PHP_EOL, FILE_APPEND);
 
-        file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__. var_export($request, true). PHP_EOL, FILE_APPEND);
+        // file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__. var_export($request, true). PHP_EOL, FILE_APPEND);
 
         //websocket时,$request为null
         //websockerapp->onRequest(null, null);
@@ -100,8 +100,10 @@ abstract class BaseBootstrap implements BootstrapInterface
 
     public function onWorkerStart($server, $worker_id)
     {
-        file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__. PHP_EOL, FILE_APPEND);
-
+        // Server::getLog()->info(__METHOD__);
+        // $this->
+        // global $mlog;
+        // $mlog->info(__METHOD__);
         $this->workerId = $worker_id;
         $initFunc = $this->init;
         if ($initFunc instanceof \Closure) {
@@ -127,10 +129,6 @@ abstract class BaseBootstrap implements BootstrapInterface
      */
     public function onRequest($request, $response)
     {
-        file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__. PHP_EOL, FILE_APPEND);
-
-        // Yii::info(__METHOD__. date("Y-m-d H:i:s"). PHP_EOL);
-        // echo __METHOD__. PHP_EOL;
 
         $this->initRequest($request);
         if (COROUTINE_ENV) {
@@ -139,9 +137,6 @@ abstract class BaseBootstrap implements BootstrapInterface
         }
 
         $result = $this->handleRequest($request, $response);
-
-        // echo 'result '. var_export($result, true). PHP_EOL;
-        // var_dump($result);
 
         if (COROUTINE_ENV) {
             Yii::$context->removeCurrentCoroutineData();
@@ -155,10 +150,6 @@ abstract class BaseBootstrap implements BootstrapInterface
      */
     public function onRequests($request, $response)
     {
-        file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__. PHP_EOL, FILE_APPEND);
-
-        // Yii::info(__METHOD__. date("Y-m-d H:i:s"). PHP_EOL);
-        // echo __METHOD__. PHP_EOL;
 
         $this->initRequest($request);
         if (COROUTINE_ENV) {
@@ -167,13 +158,10 @@ abstract class BaseBootstrap implements BootstrapInterface
         }
 
         $result = $this->handleRequest($request, $response);
-
-        // echo 'result '. var_export($result, true). PHP_EOL;
-        // var_dump($result);
-
         if (COROUTINE_ENV) {
             Yii::$context->removeCurrentCoroutineData();
         }
+        // Yii::info(__METHOD__. var_export($result, true));
         return $result;
     }
 
@@ -213,6 +201,7 @@ abstract class BaseBootstrap implements BootstrapInterface
     public function onWorkerStop($server, $worker_id)
     {
         file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__. PHP_EOL, FILE_APPEND);
+        // $mlog->info('');
 
         $logger = Yii::getLogger();
         $logger->flush(true);

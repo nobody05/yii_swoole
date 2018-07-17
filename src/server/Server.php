@@ -63,14 +63,10 @@ class Server
      */
     public $setting = [];
 
+    public static $log;
+
     public function __construct(array $config = [])
     {
-        // echo __METHOD__. PHP_EOL;
-        
-        // Yii::info(__METHOD__. PHP_EOL);
-        
-        file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__. PHP_EOL, FILE_APPEND);
-
         $this->parseConfig($config);
         $this->init();
     }
@@ -79,10 +75,6 @@ class Server
      */
     public function init()
     {
-        // echo __METHOD__. PHP_EOL;
-
-        file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__. PHP_EOL, FILE_APPEND);
-
         switch ($this->serverType){
             case 'http':
                 $this->swoole = new \swoole_http_server($this->host,$this->port);
@@ -121,6 +113,8 @@ class Server
         }
     }
 
+    // public function 
+
     public function getId()
     {
         return $this->id;
@@ -129,6 +123,11 @@ class Server
     public function setId($value)
     {
         $this->id = $value;
+    }
+
+    public static function getLog()
+    {
+        return self::$log;
     }
 
     /**
@@ -144,6 +143,8 @@ class Server
     public function start()
     {
         $this->swoole->start();
+
+        
     }
 
     /**
@@ -151,8 +152,6 @@ class Server
      */
     public function onStart()
     {
-         file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__. PHP_EOL, FILE_APPEND);
-
         $this->setProcessTitle($this->id,'master');
     }
 
@@ -163,8 +162,6 @@ class Server
      */
     public function onWorkerStart(Swoole\Server $server,$worker_id)
     {
-         file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__. PHP_EOL, FILE_APPEND);
-
         if(function_exists('opcache_reset')){
             opcache_reset();
         }
@@ -186,8 +183,6 @@ class Server
 
     public function onWorkerStop(Swoole\Server $server,$worker_id)
     {
-        file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__. PHP_EOL, FILE_APPEND);
-        
         if($this->bootstrap){
             $this->bootstrap->onWorkerStop($server,$worker_id);
         }
@@ -258,8 +253,6 @@ class Server
      */
     static function run($config,callable $func)
     {
-        file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__. PHP_EOL, FILE_APPEND);
-
         global $argv;
         if(!isset($argv[0],$argv[1])){
             print_r("invalid run params,see help,run like:php http-server.php start|stop|reload".PHP_EOL);
@@ -270,15 +263,15 @@ class Server
         $pidFile = $config['setting']['pid_file'];
         $masterPid     = file_exists($pidFile) ? file_get_contents($pidFile) : null;
         if ($command == 'start'){
-            if ($masterPid > 0 and posix_kill($masterPid,0)) {
+            /*if ($masterPid > 0 and posix_kill($masterPid,0)) {
                 print_r('Server is already running. Please stop it first.'.PHP_EOL);
                 exit;
-            }
+            }*/
             $server = Server::autoCreate($config);
             $func($server);
         }elseif($command == 'stop'){
             if(!empty($masterPid)){
-                posix_kill($masterPid,SIGTERM);
+                // posix_kill($masterPid,SIGTERM);
                 if(PHP_OS=="Darwin"){
                     //mac下.发送信号量无法触发shutdown.
                     unlink($pidFile);
@@ -289,7 +282,7 @@ class Server
             exit;
         }elseif($command == 'reload'){
             if (!empty($masterPid)) {
-                posix_kill($masterPid, SIGUSR1); // reload all worker
+                // posix_kill($masterPid, SIGUSR1); // reload all worker
 //                posix_kill($masterPid, SIGUSR2); // reload all task
             } else {
                 print_r('master pid is null, maybe you delete the pid file we created. you can manually kill the master process with signal SIGUSR1.'.PHP_EOL);

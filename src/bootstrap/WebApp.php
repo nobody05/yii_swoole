@@ -29,10 +29,6 @@ class WebApp extends BaseBootstrap
      */
     public function handleRequest($request, $response)
     {
-        file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__. PHP_EOL, FILE_APPEND);
-
-        // echo __METHOD__. PHP_EOL;
-
         $app = new Application($this->appConfig);
 
         $app->getRequest()->setSwooleRequest($request);
@@ -83,8 +79,6 @@ class WebApp extends BaseBootstrap
      */
     public function onHandleRequestEnd(Event $event)
     {
-        file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__. PHP_EOL, FILE_APPEND);
-
         /** @var Application $app */
         $app = $event->sender;
         if ($app->has('session', true)) {

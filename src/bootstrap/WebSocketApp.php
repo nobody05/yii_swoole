@@ -100,6 +100,8 @@ class WebSocketApp extends WebApp
      */
     public function handlerHttpRequest($request, $response)
     {
+        file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__. PHP_EOL, FILE_APPEND);
+
         $app = new Application($this->appConfig);
 
         $app->getRequest()->setSwooleRequest($request);
@@ -159,8 +161,6 @@ class WebSocketApp extends WebApp
         // 这个地方都传了null
         // 原方法onRequest跟swoole的onRequest重名了
         $data = $this->onRequests(null, null);
-        
-        file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__. ' response data :'. var_dump($data, true) . PHP_EOL, FILE_APPEND);
 
         // 程序中返回数组  format为json
         $ws->push($frame->fd, $this->formatResponse($data));
@@ -186,12 +186,8 @@ class WebSocketApp extends WebApp
 
         $data = json_decode($frame->data, true);
 
-        file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__ . ' data: '. var_export($data, true) . PHP_EOL, FILE_APPEND);
-
         if (json_last_error() == JSON_ERROR_NONE) {
             
-            file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__ . ' data: '. var_export($data, true) . PHP_EOL, FILE_APPEND);
-
             if (isset($data['route']) && isset($data['content'])) {
                 $this->dataRoute = $data['route'];
                 $this->dataContent = $data['content'];
@@ -210,16 +206,8 @@ class WebSocketApp extends WebApp
     {
         file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__. PHP_EOL, FILE_APPEND);
 
-        // Yii::info(__METHOD__. PHP_EOL);
-
-        // var_export($request, true);
-        // var_export($response, true);
-        // 
-        
-        file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__. var_export($request, true). ' response:'.   var_export($response, true) . PHP_EOL, FILE_APPEND);
-
+        $app = new Application($this->appConfig);
         try {
-            $app = new Application($this->appConfig);
             /**
              * request存在则是websocket下的http请求，swoole也是可以处理的
              */
@@ -234,7 +222,11 @@ class WebSocketApp extends WebApp
                 // $app->getRequest()->setSwooleRequest($request);
             } else {*/
                 $app->request->setPathInfo($this->dataRoute);
+                
+                // websocket 没有get/ post
                 $app->request->setBodyParams($this->dataContent);
+                $app->request->setQueryParams($this->dataContent);
+
                 $app->on(Application::EVENT_AFTER_RUN, [$this, 'onHandleRequestEnd']);
 
     //            $app->beforeRun();

@@ -36,8 +36,6 @@ class Application extends \yii\web\Application
         static::setInstance($this);
         $this->state = self::STATE_BEGIN;
 
-        // var_dump($config);
-
         $this->preInit($config);
         if (!self::$_hasBootstrap) {
             $this->registerErrorHandler($config);
