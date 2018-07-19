@@ -6,7 +6,7 @@
  * Time: 下午2:59
  */
 
-namespace tsingsun\swoole\server;
+namespace nobody\swoole\server;
 
 
 use Swoole\Coroutine;
@@ -19,7 +19,7 @@ use yii\base\InvalidParamException;
  * 回调函数
  *      function(Callback $cb,$jobId,$coroutineID)
  *      - $coroutineID 启动的协程ID
- * @package tsingsun\swoole\server
+ * @package nobody\swoole\server
  */
 class Timer
 {

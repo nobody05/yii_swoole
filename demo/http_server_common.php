@@ -1,6 +1,6 @@
 <?php
 
-use \tsingsun\swoole\server\Server;
+use \nobody\swoole\server\Server;
 /**
  * Created by PhpStorm.
  * User: tsingsun
@@ -14,7 +14,7 @@ defined('YII_ENV') or define('YII_ENV', 'dev');
 
 require(__DIR__ . '/../../vendor/autoload.php');
 $config = [
-    'class'=>'tsingsun\swoole\server\HttpServer',
+    'class'=>'nobody\swoole\server\HttpServer',
     'timeout'=>2,
     'setting' => [
         'daemonize'=>0,

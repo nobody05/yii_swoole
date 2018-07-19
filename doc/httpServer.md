@@ -10,7 +10,7 @@ Swoole Http Server
 1.  将swoole配置文件放在配置文件夹中
 ```php
 return [
-    'class'=>'tsingsun\swoole\server\HttpServer',
+    'class'=>'nobody\swoole\server\HttpServer',
     'setting' => [
         'daemonize'=>1,
         'reactor_num'=>1,
@@ -30,8 +30,8 @@ defined('WEBROOT') or define('WEBROOT', __DIR__);
 require(__DIR__ . '/../../vendor/autoload.php');
 $config = require(__DIR__ . '/../config/swoole.php');
 
-\tsingsun\swoole\server\Server::run($config,function ($nodeConfig){
-    $server = \tsingsun\swoole\server\Server::autoCreate($nodeConfig);
+\nobody\swoole\server\Server::run($config,function ($nodeConfig){
+    $server = \nobody\swoole\server\Server::autoCreate($nodeConfig);
     $starter = new \tsingsun\swoole\bootstrap\YiiWeb($server);
     //初始化函数独立,为了在启动时,不会加载Yii相关的文件,在库更新时采用reload平滑启动服务器
     $starter->init = function ($bootstrap) {

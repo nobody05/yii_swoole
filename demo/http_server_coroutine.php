@@ -1,6 +1,6 @@
 <?php
 
-use \tsingsun\swoole\server\Server;
+use \nobody\swoole\server\Server;
 /**
  * Created by PhpStorm.
  * User: tsingsun
@@ -15,7 +15,7 @@ defined('COROUTINE_ENV') or define('COROUTINE_ENV', true);
 
 require(__DIR__ . '/../../vendor/autoload.php');
 $config = [
-    'class'=>'tsingsun\swoole\server\HttpServer',
+    'class'=>'nobody\swoole\server\HttpServer',
     'timeout'=>2,
     'setting' => [
         'daemonize'=>0,

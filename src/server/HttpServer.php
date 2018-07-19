@@ -6,7 +6,7 @@
  * Time: 下午6:24
  */
 
-namespace tsingsun\swoole\server;
+namespace nobody\swoole\server;
 
 use Yii;
 use Swoole\Coroutine;

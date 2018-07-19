@@ -16,7 +16,7 @@ use Swoole\Http\Response as SwooleResponse;
 use tsingsun\swoole\di\Container;
 use tsingsun\swoole\di\ContainerDecorator;
 use tsingsun\swoole\di\Context;
-use tsingsun\swoole\server\Server;
+use nobody\swoole\server\Server;
 use Yii;
 use tsingsun\swoole\bootstrap\WebApp;
 

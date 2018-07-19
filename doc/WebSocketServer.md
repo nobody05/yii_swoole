@@ -11,13 +11,13 @@ WebSocket Server
 
 #### 启动脚本
 ```
-use \tsingsun\swoole\server\Server;
+use \nobody\swoole\server\Server;
 
 defined('WEBROOT') or define('WEBROOT', __DIR__);
 
 require(__DIR__ . '/../../vendor/autoload.php');
 $config = [
-    'class'=>'tsingsun\swoole\server\WebSocketServer',
+    'class'=>'nobody\swoole\server\WebSocketServer',
     'serverType'=>'websocket',
     'port'=>9502,
     'setting' => [

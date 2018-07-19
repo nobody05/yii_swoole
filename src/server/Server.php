@@ -6,7 +6,7 @@
  * Time: 下午7:25
  */
 
-namespace tsingsun\swoole\server;
+namespace nobody\swoole\server;
 
 use Yii;
 use Swoole;
@@ -17,7 +17,7 @@ use yii\base\ErrorHandler;
  * swoole server
  * events: 'Start', 'ManagerStart', 'ManagerStop', 'PipeMessage', 'Task', 'Packet', 'Finish',
  *         'Receive', 'Connect', 'Close', 'Timer', 'WorkerStart', 'WorkerStop', 'Shutdown', 'WorkerError'
- * @package tsingsun\swoole\server
+ * @package nobody\swoole\server
  */
 class Server
 {
@@ -239,7 +239,7 @@ class Server
             if($instance instanceof Server){
                return $instance;
             }
-            throw new \Exception('class must implement tsingsun\swoole\server');
+            throw new \Exception('class must implement nobody\swoole\server');
         }else{
             throw new \Exception("config 'class' not found");
         }

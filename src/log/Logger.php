@@ -33,7 +33,7 @@ class Logger extends \yii\log\Logger
                     && strpos($trace['file'], YII2_PATH) !== 0
                     && strpos($trace['file'], YII2_SWOOLE_PATH) !== 0) {
                     //cli remove start script
-                    if(isset($trace['class']) && $trace['class']=='tsingsun\swoole\server\Server'){
+                    if(isset($trace['class']) && $trace['class']=='nobody\swoole\server\Server'){
                         break;
                     }
                     unset($trace['object'], $trace['args']);

@@ -9,7 +9,7 @@
 namespace yiiunit\extension\swoole\server;
 
 use yiiunit\extension\swoole\TestCase;
-use tsingsun\swoole\server\Server;
+use nobody\swoole\server\Server;
 use Yii;
 
 class MysqlTest extends TestCase

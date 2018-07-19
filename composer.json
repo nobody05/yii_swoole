@@ -1,5 +1,5 @@
 {
-    "name": "tsingsun/yii2-swoole",
+    "name": "nobody/yii2-swoole",
     "description": "run yii2 in swoole coroutine mode",
     "keywords": [
         "yii2",
@@ -9,8 +9,8 @@
     "type": "yii2-extension",
     "author": [
         {
-            "name": "liqingshan",
-            "email": "qsli@1ping.com"
+            "name": "gaozhi",
+            "email": "1035948193@qq.com"
         }
     ],
     "require": {
@@ -25,7 +25,7 @@
     },
     "autoload": {
         "psr-4": {
-            "tsingsun\\swoole\\": "src"
+            "nobody\\swoole\\": "src"
         }
     },
     "suggest": {

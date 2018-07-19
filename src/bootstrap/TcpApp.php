@@ -11,7 +11,7 @@ namespace tsingsun\swoole\bootstrap;
 // use Swoole\Http\Request as SwooleRequest;
 // use Swoole\Http\Response as SwooleResponse;
 
-use tsingsun\swoole\server\Server;
+use nobody\swoole\server\Server;
 use tsingsun\swoole\web\Application;
 use yii\base\ExitException;
 use Yii;

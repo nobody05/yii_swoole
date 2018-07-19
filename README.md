@@ -39,7 +39,7 @@
 启动文件为服务启动脚本,根据不同的服务类型定制,也可以根据业务来定制,具体请查看运行方式中的各服务器说明.  
 协程与非协程的切换也在启动脚本中.
 ```php
-use \tsingsun\swoole\server\Server;
+use \nobody\swoole\server\Server;
 //站点根目录,相当于nginx的root配置
 defined('WEBROOT') or define('WEBROOT', __DIR__);
 defined('YII_DEBUG') or define('YII_DEBUG', true);
@@ -49,7 +49,7 @@ defined('COROUTINE_ENV') or define('COROUTINE_ENV', true);
 
 require(__DIR__ . '/../../vendor/autoload.php');
 $config = [
-    'class'=>'tsingsun\swoole\server\HttpServer',
+    'class'=>'nobody\swoole\server\HttpServer',
     //Swoole的配置,根据实际情况配置
     'setting' => [
         'daemonize'=>0,

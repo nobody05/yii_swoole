@@ -6,7 +6,7 @@
  * Time: 上午11:49
  */
 
-namespace tsingsun\swoole\server;
+namespace nobody\swoole\server;
 
 use Swoole\WebSocket\Frame;
 use Swoole\WebSocket\Server;

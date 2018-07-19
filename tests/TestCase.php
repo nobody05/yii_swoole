@@ -3,8 +3,8 @@
 namespace yiiunit\extension\swoole;
 
 use tsingsun\swoole\bootstrap\BaseBootstrap;
-use tsingsun\swoole\server\HttpServer;
-use tsingsun\swoole\server\Server;
+use nobody\swoole\server\HttpServer;
+use nobody\swoole\server\Server;
 use tsingsun\swoole\web\Application;
 use yii\helpers\ArrayHelper;
 
