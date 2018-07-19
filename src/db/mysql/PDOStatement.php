@@ -6,10 +6,10 @@
  * Time: 上午11:20
  */
 
-namespace tsingsun\swoole\db\mysql;
+namespace nobody\swoole\db\mysql;
 
 
-use tsingsun\swoole\db\mysql\PDO;
+use nobody\swoole\db\mysql\PDO;
 use yii\helpers\ArrayHelper;
 
 class PDOStatement extends \PDOStatement

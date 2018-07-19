@@ -6,7 +6,7 @@
  * Time: 上午11:38
  */
 
-namespace tsingsun\swoole\pool;
+namespace nobody\swoole\pool;
 
 
 use yii\base\Component;

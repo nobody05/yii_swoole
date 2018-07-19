@@ -6,18 +6,18 @@
  * Time: 上午10:41
  */
 
-namespace tsingsun\swoole\bootstrap;
+namespace nobody\swoole\bootstrap;
 
 use Swoole\Http\Request as SwooleRequest;
 use Swoole\Http\Response as SwooleResponse;
-use tsingsun\swoole\web\Application;
+use nobody\swoole\web\Application;
 use yii\base\ExitException;
 use Yii;
 use yii\base\Event;
 
 /**
  * Yii starter for swoole server
- * @package tsingsun\swoole\bootstrap
+ * @package nobody\swoole\bootstrap
  */
 class WebApp extends BaseBootstrap
 {

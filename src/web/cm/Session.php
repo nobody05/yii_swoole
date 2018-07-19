@@ -6,13 +6,13 @@
  * Time: 下午6:22
  */
 
-namespace tsingsun\swoole\web\cm;
+namespace nobody\swoole\web\cm;
 
 use Yii;
 
 /**
  * Class Session
- * @package tsingsun\swoole\web
+ * @package nobody\swoole\web
  */
 class Session extends \yii\web\Session
 {

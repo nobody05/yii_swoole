@@ -6,16 +6,16 @@
  * Time: 上午10:13
  */
 
-namespace tsingsun\swoole\db\mysql;
+namespace nobody\swoole\db\mysql;
 
 use PDOException;
 use Swoole\Coroutine\Mysql;
-use tsingsun\swoole\pool\ConnectionManager;
-use tsingsun\swoole\pool\DbPool;
+use nobody\swoole\pool\ConnectionManager;
+use nobody\swoole\pool\DbPool;
 
 /**
  * mysql的pdo类
- * @package tsingsun\swoole\db\mysql
+ * @package nobody\swoole\db\mysql
  */
 class PDO extends \PDO
 {

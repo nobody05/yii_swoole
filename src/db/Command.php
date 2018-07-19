@@ -6,7 +6,7 @@
  * Time: 上午9:25
  */
 
-namespace tsingsun\swoole\db;
+namespace nobody\swoole\db;
 
 use Yii;
 use yii\base\Exception;

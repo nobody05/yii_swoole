@@ -6,19 +6,19 @@
  * Time: 下午3:45
  */
 
-namespace tsingsun\swoole\bootstrap;
+namespace nobody\swoole\bootstrap;
 
 use Swoole\Http\Request as SwooleRequest;
 use Swoole\Http\Response as SwooleResponse;
-// use tsingsun\swoole\web\Application;
+// use nobody\swoole\web\Application;
 
 
-use tsingsun\swoole\di\Container;
-use tsingsun\swoole\di\ContainerDecorator;
-use tsingsun\swoole\di\Context;
+use nobody\swoole\di\Container;
+use nobody\swoole\di\ContainerDecorator;
+use nobody\swoole\di\Context;
 use nobody\swoole\server\Server;
 use Yii;
-use tsingsun\swoole\bootstrap\WebApp;
+use nobody\swoole\bootstrap\WebApp;
 
 // defined('COROUTINE_ENV') or define('COROUTINE_ENV', false);
 

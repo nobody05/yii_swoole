@@ -6,24 +6,24 @@
  * Time: 上午11:27
  */
 
-namespace tsingsun\swoole\bootstrap;
+namespace nobody\swoole\bootstrap;
 
 use Yii;
 use Swoole\WebSocket\Frame;
 use Swoole\WebSocket\Server;
 use Swoole\Http\Request;
-use tsingsun\swoole\web\Application;
+use nobody\swoole\web\Application;
 use yii\base\Event;
 use yii\web\ForbiddenHttpException;
 
 
-use tsingsun\swoole\di\Container;
-use tsingsun\swoole\di\ContainerDecorator;
-use tsingsun\swoole\di\Context;
+use nobody\swoole\di\Container;
+use nobody\swoole\di\ContainerDecorator;
+use nobody\swoole\di\Context;
 
-// use tsingsun\swoole\di\Container;
-// use tsingsun\swoole\di\ContainerDecorator;
-// use tsingsun\swoole\di\Context;
+// use nobody\swoole\di\Container;
+// use nobody\swoole\di\ContainerDecorator;
+// use nobody\swoole\di\Context;
 
 
 class WebSocketApp extends WebApp

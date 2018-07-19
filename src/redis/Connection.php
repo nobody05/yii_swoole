@@ -6,11 +6,11 @@
  * Time: 上午10:02
  */
 
-namespace tsingsun\swoole\redis;
+namespace nobody\swoole\redis;
 
 use Swoole\Coroutine\Redis;
-use tsingsun\swoole\pool\ConnectionManager;
-use tsingsun\swoole\pool\DbPool;
+use nobody\swoole\pool\ConnectionManager;
+use nobody\swoole\pool\DbPool;
 use yii\base\Exception;
 
 class Connection extends \yii\redis\Connection

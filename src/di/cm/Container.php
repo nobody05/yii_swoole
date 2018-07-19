@@ -6,31 +6,31 @@
  * Time: 下午4:28
  */
 
-namespace tsingsun\swoole\di\cm;
+namespace nobody\swoole\di\cm;
 
 use Yii;
 use yii\di\NotInstantiableException;
 
 /**
  * 使用该类，替换了部分类的实现，方便YII项目的迁移
- * @package tsingsun\swoole\di
+ * @package nobody\swoole\di
  */
 class Container extends \yii\di\Container
 {
 
     private $classCompatible = [
-        'yii\web\Request' => 'tsingsun\swoole\web\Request',
-        'yii\web\Response' => 'tsingsun\swoole\web\Response',
-        'yii\web\ErrorHandler' => 'tsingsun\swoole\web\ErrorHandler',
-        'yii\log\Logger' => 'tsingsun\swoole\log\Logger',
-        'yii\web\Session' => 'tsingsun\swoole\web\cm\Session',
-        'yii\web\CacheSession' => 'tsingsun\swoole\web\cm\CacheSession',
-        'yii\web\DbSession' => 'tsingsun\swoole\web\cm\DbSession',
-        'yii\log\FileTarget' => 'tsingsun\swoole\log\FileTarget',
-        'yii\db\Command' => 'tsingsun\swoole\db\Command',
-        'yii\db\Connection' => 'tsingsun\swoole\db\cm\Connection',
-        'yii\redis\Connection' => 'tsingsun\swoole\redis\cm\Connection',
-        'yii\redis\Session' => 'tsingsun\swoole\redis\cm\Session',
+        'yii\web\Request' => 'nobody\swoole\web\Request',
+        'yii\web\Response' => 'nobody\swoole\web\Response',
+        'yii\web\ErrorHandler' => 'nobody\swoole\web\ErrorHandler',
+        'yii\log\Logger' => 'nobody\swoole\log\Logger',
+        'yii\web\Session' => 'nobody\swoole\web\cm\Session',
+        'yii\web\CacheSession' => 'nobody\swoole\web\cm\CacheSession',
+        'yii\web\DbSession' => 'nobody\swoole\web\cm\DbSession',
+        'yii\log\FileTarget' => 'nobody\swoole\log\FileTarget',
+        'yii\db\Command' => 'nobody\swoole\db\Command',
+        'yii\db\Connection' => 'nobody\swoole\db\cm\Connection',
+        'yii\redis\Connection' => 'nobody\swoole\redis\cm\Connection',
+        'yii\redis\Session' => 'nobody\swoole\redis\cm\Session',
     ];
 
     protected $autoReplace = true;
@@ -39,15 +39,15 @@ class Container extends \yii\di\Container
      * @var array
      */
     private $classPersistent = [
-        'tsingsun\swoole\web\Request',
-        'tsingsun\swoole\web\Response',
-        'tsingsun\swoole\web\cm\Session',
-        'tsingsun\swoole\web\cm\CacheSession',
-        'tsingsun\swoole\web\cm\DbSession',
-        'tsingsun\swoole\redis\cm\Session',
-        'tsingsun\swoole\log\Logger',
-        'tsingsun\swoole\pool\ConnectionManager',
-        'tsingsun\swoole\web\ErrorHandler',
+        'nobody\swoole\web\Request',
+        'nobody\swoole\web\Response',
+        'nobody\swoole\web\cm\Session',
+        'nobody\swoole\web\cm\CacheSession',
+        'nobody\swoole\web\cm\DbSession',
+        'nobody\swoole\redis\cm\Session',
+        'nobody\swoole\log\Logger',
+        'nobody\swoole\pool\ConnectionManager',
+        'nobody\swoole\web\ErrorHandler',
         'yii\web\UrlManager',
         'yii\i18n\I18N'
     ];

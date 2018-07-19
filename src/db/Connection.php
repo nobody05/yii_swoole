@@ -6,7 +6,7 @@
  * Time: 下午4:09
  */
 
-namespace tsingsun\swoole\db;
+namespace nobody\swoole\db;
 
 use yii\base\InvalidConfigException;
 use yii\db\Exception;
@@ -21,7 +21,7 @@ class Connection extends \yii\db\Connection
      */
     public $poolKey;
 
-    public $commandClass = 'tsingsun\swoole\db\Command';
+    public $commandClass = 'nobody\swoole\db\Command';
 
     public function init()
     {
@@ -84,8 +84,8 @@ class Connection extends \yii\db\Connection
             $driver = $this->getDriverName();
             if (isset($driver)) {
                 if($driver === 'mysql'){
-                    $pdoClass = 'tsingsun\swoole\db\mysql\PDO';
-//                    $this->commandClass = 'tsingsun\swoole\db\mysql\Command';
+                    $pdoClass = 'nobody\swoole\db\mysql\PDO';
+//                    $this->commandClass = 'nobody\swoole\db\mysql\Command';
                 } elseif ($driver === 'mssql' || $driver === 'dblib') {
                     $pdoClass = 'yii\db\mssql\PDO';
                 } elseif ($driver === 'sqlsrv') {

@@ -36,10 +36,10 @@ $config = [
             'cookieValidationKey' => 'B1uah2HVO-CEdFt5o-G46_4-dL3aEo_K',
         ],
         'reponse' =>[
-            'class'=>'tsingsun\swoole\web\Response'
+            'class'=>'nobody\swoole\web\Response'
         ],
         'session' =>[
-//            'class'=> 'tsingsun\swoole\web\Session',
+//            'class'=> 'nobody\swoole\web\Session',
             'class'=> 'yii\web\CacheSession',
         ],
         'cache' => [
@@ -50,7 +50,7 @@ $config = [
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
-            'class'=> 'tsingsun\swoole\web\ErrorHandler',
+            'class'=> 'nobody\swoole\web\ErrorHandler',
 //            'errorAction' => 'site/error',
         ],
 //        'mailer' => [

@@ -2,10 +2,10 @@
 
 namespace yiiunit\extension\swoole;
 
-use tsingsun\swoole\bootstrap\BaseBootstrap;
+use nobody\swoole\bootstrap\BaseBootstrap;
 use nobody\swoole\server\HttpServer;
 use nobody\swoole\server\Server;
-use tsingsun\swoole\web\Application;
+use nobody\swoole\web\Application;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -44,7 +44,7 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
         return isset(static::$params[$name]) ? static::$params[$name] : $default;
     }
 
-    protected function mockApplication($config = [], $appClass = 'tsingsun\swoole\bootstrap\WebApp')
+    protected function mockApplication($config = [], $appClass = 'nobody\swoole\bootstrap\WebApp')
     {
         $cf = ArrayHelper::merge(
             $c1 = require(__DIR__ . '/config/console.php'),
@@ -59,7 +59,7 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
         new $appClass(ArrayHelper::merge($cf, $config));
     }
 
-    protected function mockWebApplication($configs = [], $appClass = 'tsingsun\swoole\bootstrap\WebApp')
+    protected function mockWebApplication($configs = [], $appClass = 'nobody\swoole\bootstrap\WebApp')
     {
         $cf = ArrayHelper::merge(
             $c1 = require(__DIR__ . '/config/main.php'),

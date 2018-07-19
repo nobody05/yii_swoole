@@ -6,15 +6,15 @@
  * Time: 上午10:53
  */
 
-namespace tsingsun\swoole\web\cm;
+namespace nobody\swoole\web\cm;
 
-use tsingsun\swoole\web\Response;
+use nobody\swoole\web\Response;
 use Yii;
 use yii\base\InvalidParamException;
 /**
  * 普通(非协程)模式下session处理类
  * swoole对原生php session的部分操作存在部分不支持,如session_set_cookie_params
- * @package tsingsun\swoole\cmode
+ * @package nobody\swoole\cmode
  */
 trait SessionTrait
 {

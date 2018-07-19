@@ -7,7 +7,7 @@
  */
 namespace yiiunit\extension\swoole\controllers;
 
-use tsingsun\swoole\pool\ConnectionManager;
+use nobody\swoole\pool\ConnectionManager;
 use yiiunit\extension\swoole\TestCase;
 use Swoole\Coroutine as co;
 

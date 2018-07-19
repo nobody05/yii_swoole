@@ -6,14 +6,14 @@
  * Time: 下午6:05
  */
 
-namespace tsingsun\swoole\di;
+namespace nobody\swoole\di;
 
 
 use Yii;
 
 /**
  * 以该类来替换Yii::$app的引用,以实现协程态下$app的隔离
- * @package tsingsun\swoole\coroutine
+ * @package nobody\swoole\coroutine
  */
 class ApplicationDecorator
 {

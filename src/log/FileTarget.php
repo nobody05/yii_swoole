@@ -6,17 +6,17 @@
  * Time: 下午6:34
  */
 
-namespace tsingsun\swoole\log;
+namespace nobody\swoole\log;
 
 
-use tsingsun\swoole\web\Request;
+use nobody\swoole\web\Request;
 use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 use yii\helpers\VarDumper;
 
 /**
  * 使用异步的方式来实现日志写入操作
- * @package tsingsun\swoole\log
+ * @package nobody\swoole\log
  */
 class FileTarget extends \yii\log\FileTarget
 {

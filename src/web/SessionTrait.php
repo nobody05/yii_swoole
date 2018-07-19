@@ -6,7 +6,7 @@
  * Time: 上午11:16
  */
 
-namespace tsingsun\swoole\web;
+namespace nobody\swoole\web;
 
 use Yii;
 use yii\base\InvalidParamException;
@@ -15,7 +15,7 @@ use yii\base\InvalidParamException;
  * 协程模式下的session处理类
  *
  * @see \nobody\swoole\web\cm\SessionTrait 非协程下的引用的类
- * @package tsingsun\swoole\web
+ * @package nobody\swoole\web
  */
 trait SessionTrait
 {

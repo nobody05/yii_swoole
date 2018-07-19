@@ -6,7 +6,7 @@
  * Time: 下午5:13
  */
 
-namespace tsingsun\swoole\web;
+namespace nobody\swoole\web;
 
 
 use yii\di\Instance;

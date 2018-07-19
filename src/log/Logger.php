@@ -6,16 +6,16 @@
  * Time: 下午3:23
  */
 
-namespace tsingsun\swoole\log;
+namespace nobody\swoole\log;
 
-use tsingsun\swoole\bootstrap\BaseBootstrap;
-use tsingsun\swoole\web\ErrorHandler;
+use nobody\swoole\bootstrap\BaseBootstrap;
+use nobody\swoole\web\ErrorHandler;
 
 defined('YII2_SWOOLE_PATH') or define('YII2_SWOOLE_PATH', dirname(__DIR__));
 
 /**
  * Class Log
- * @package tsingsun\swoole\log
+ * @package nobody\swoole\log
  */
 class Logger extends \yii\log\Logger
 {

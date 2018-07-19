@@ -6,7 +6,7 @@
  * Time: 下午4:41
  */
 
-namespace tsingsun\swoole\web;
+namespace nobody\swoole\web;
 
 use Yii;
 use yii\base\InvalidConfigException;
@@ -17,7 +17,7 @@ use yii\web\Cookie;
 
 /**
  * Class Request
- * @package tsingsun\swoole\web
+ * @package nobody\swoole\web
  */
 class Request extends \yii\web\Request
 {

@@ -6,7 +6,7 @@
  * Time: 上午10:02
  */
 
-namespace tsingsun\swoole\redis\cm;
+namespace nobody\swoole\redis\cm;
 
 use yii\base\Exception;
 

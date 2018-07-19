@@ -6,7 +6,7 @@
  * Time: 下午2:31
  */
 
-namespace tsingsun\swoole\pool;
+namespace nobody\swoole\pool;
 
 
 class DbPool extends ConnectionPool

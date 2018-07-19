@@ -6,14 +6,14 @@
  * Time: 上午11:51
  */
 
-namespace tsingsun\swoole\pool;
+namespace nobody\swoole\pool;
 
 use yii\base\Component;
 use yii\base\InvalidParamException;
 
 /**
  * 连接池管理门面
- * @package tsingsun\swoole\pool
+ * @package nobody\swoole\pool
  */
 class ConnectionManager extends Component
 {

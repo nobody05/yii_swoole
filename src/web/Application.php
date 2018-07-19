@@ -1,8 +1,8 @@
 <?php
 
-namespace tsingsun\swoole\web;
+namespace nobody\swoole\web;
 
-use tsingsun\swoole\di\ApplicationDecorator;
+use nobody\swoole\di\ApplicationDecorator;
 use Yii;
 use yii\base\BootstrapInterface;
 use yii\base\Component;
@@ -153,7 +153,7 @@ class Application extends \yii\web\Application
     public function coreComponents()
     {
         return array_merge(parent::coreComponents(), [
-            'connectionManager' => ['class' => 'tsingsun\swoole\pool\ConnectionManager'],
+            'connectionManager' => ['class' => 'nobody\swoole\pool\ConnectionManager'],
         ]);
     }
 }

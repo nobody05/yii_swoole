@@ -6,11 +6,11 @@
  * Time: 下午4:09
  */
 
-namespace tsingsun\swoole\db\cm;
+namespace nobody\swoole\db\cm;
 
 /**
  * 非协程模式下的链接类
- * @package tsingsun\swoole\cmode
+ * @package nobody\swoole\cmode
  */
 class Connection extends \yii\db\Connection
 {

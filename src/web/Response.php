@@ -6,14 +6,14 @@
  * Time: 下午3:04
  */
 
-namespace tsingsun\swoole\web;
+namespace nobody\swoole\web;
 
 use Yii;
 use yii\base\InvalidConfigException;
 
 /**
  * Class Response for swoole
- * @package tsingsun\swoole\web
+ * @package nobody\swoole\web
  */
 class Response extends \yii\web\Response
 {

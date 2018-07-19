@@ -6,10 +6,10 @@
  * Time: 上午11:14
  */
 
-namespace tsingsun\swoole\redis;
+namespace nobody\swoole\redis;
 
 
-use tsingsun\swoole\web\SessionTrait;
+use nobody\swoole\web\SessionTrait;
 use Yii;
 use yii\base\InvalidConfigException;
 

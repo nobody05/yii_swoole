@@ -8,7 +8,7 @@
 
 namespace yiiunit\extension\swoole\server;
 
-use tsingsun\swoole\web\ErrorHandler;
+use nobody\swoole\web\ErrorHandler;
 use yiiunit\extension\swoole\TestCase;
 
 class ErrorHandlerTest extends TestCase

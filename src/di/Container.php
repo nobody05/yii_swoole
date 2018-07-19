@@ -6,31 +6,31 @@
  * Time: 下午4:28
  */
 
-namespace tsingsun\swoole\di;
+namespace nobody\swoole\di;
 
 use Yii;
 use yii\di\NotInstantiableException;
 
 /**
  * 使用该类，替换了部分类的实现，方便YII项目的迁移
- * @package tsingsun\swoole\di
+ * @package nobody\swoole\di
  */
 class Container extends \yii\di\Container
 {
 
     private $classCompatible = [
-        'yii\web\Request' => 'tsingsun\swoole\web\Request',
-        'yii\web\Response' => 'tsingsun\swoole\web\Response',
-        'yii\web\ErrorHandler' => 'tsingsun\swoole\web\ErrorHandler',
-        'yii\log\Logger' => 'tsingsun\swoole\log\Logger',
-        'yii\web\Session' => 'tsingsun\swoole\web\Session',
-        'yii\web\CacheSession' => 'tsingsun\swoole\web\CacheSession',
-        'yii\web\DbSession' => 'tsingsun\swoole\web\DbSession',
-        'yii\log\FileTarget' => 'tsingsun\swoole\log\FileTarget',
-        'yii\db\Command' => 'tsingsun\swoole\db\Command',
-        'yii\db\Connection' => 'tsingsun\swoole\db\Connection',
-        'yii\redis\Connection' => 'tsingsun\swoole\redis\Connection',
-        'yii\redis\Session' => 'tsingsun\swoole\redis\Session',
+        'yii\web\Request' => 'nobody\swoole\web\Request',
+        'yii\web\Response' => 'nobody\swoole\web\Response',
+        'yii\web\ErrorHandler' => 'nobody\swoole\web\ErrorHandler',
+        'yii\log\Logger' => 'nobody\swoole\log\Logger',
+        'yii\web\Session' => 'nobody\swoole\web\Session',
+        'yii\web\CacheSession' => 'nobody\swoole\web\CacheSession',
+        'yii\web\DbSession' => 'nobody\swoole\web\DbSession',
+        'yii\log\FileTarget' => 'nobody\swoole\log\FileTarget',
+        'yii\db\Command' => 'nobody\swoole\db\Command',
+        'yii\db\Connection' => 'nobody\swoole\db\Connection',
+        'yii\redis\Connection' => 'nobody\swoole\redis\Connection',
+        'yii\redis\Session' => 'nobody\swoole\redis\Session',
     ];
 
     protected $autoReplace = true;
@@ -39,9 +39,9 @@ class Container extends \yii\di\Container
      * @var array
      */
     private $classPersistent = [
-        'tsingsun\swoole\pool\ConnectionManager',
-        'tsingsun\swoole\log\Logger',
-        'tsingsun\swoole\web\ErrorHandler',
+        'nobody\swoole\pool\ConnectionManager',
+        'nobody\swoole\log\Logger',
+        'nobody\swoole\web\ErrorHandler',
         'yii\web\UrlManager',
         'yii\i18n\I18N'
     ];

@@ -6,14 +6,14 @@
  * Time: 下午7:02
  */
 
-namespace tsingsun\swoole\di;
+namespace nobody\swoole\di;
 
 use Swoole\Coroutine;
-use tsingsun\swoole\web\Application;
+use nobody\swoole\web\Application;
 
 /**
  * 用于存放协程发生的上下文的容器
- * @package tsingsun\swoole\di
+ * @package nobody\swoole\di
  */
 final class Context
 {

@@ -6,13 +6,13 @@
  * Time: 下午9:21
  */
 
-namespace tsingsun\swoole\di;
+namespace nobody\swoole\di;
 
 use Yii;
 
 /**
  * Class ContainerDecorator
- * @package tsingsun\swoole\di
+ * @package nobody\swoole\di
  */
 class ContainerDecorator
 {

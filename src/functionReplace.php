@@ -428,7 +428,7 @@ namespace yii\gii\generators\module {
     }
 }
 
-namespace tsingsun\swoole\bootstrap {
+namespace nobody\swoole\bootstrap {
     function call_user_func_array(...$params)
     {
         return \nobody\swoole\call_user_func_array(...$params);
@@ -440,7 +440,7 @@ namespace tsingsun\swoole\bootstrap {
     }
 }
 
-namespace tsingsun\swoole\db {
+namespace nobody\swoole\db {
     function call_user_func_array(...$params)
     {
         return \nobody\swoole\call_user_func_array(...$params);
@@ -452,7 +452,7 @@ namespace tsingsun\swoole\db {
     }
 }
 
-namespace tsingsun\swoole\di {
+namespace nobody\swoole\di {
     function call_user_func_array(...$params)
     {
         return \nobody\swoole\call_user_func_array(...$params);
@@ -464,7 +464,7 @@ namespace tsingsun\swoole\di {
     }
 }
 
-namespace tsingsun\swoole\helper {
+namespace nobody\swoole\helper {
     function call_user_func_array(...$params)
     {
         return \nobody\swoole\call_user_func_array(...$params);
@@ -476,7 +476,7 @@ namespace tsingsun\swoole\helper {
     }
 }
 
-namespace tsingsun\swoole\log {
+namespace nobody\swoole\log {
     function call_user_func_array(...$params)
     {
         return \nobody\swoole\call_user_func_array(...$params);
@@ -488,7 +488,7 @@ namespace tsingsun\swoole\log {
     }
 }
 
-namespace tsingsun\swoole\pool {
+namespace nobody\swoole\pool {
     function call_user_func_array(...$params)
     {
         return \nobody\swoole\call_user_func_array(...$params);
@@ -500,7 +500,7 @@ namespace tsingsun\swoole\pool {
     }
 }
 
-namespace tsingsun\swoole\redis {
+namespace nobody\swoole\redis {
     function call_user_func_array(...$params)
     {
         return \nobody\swoole\call_user_func_array(...$params);
@@ -512,7 +512,7 @@ namespace tsingsun\swoole\redis {
     }
 }
 
-namespace tsingsun\swoole\web {
+namespace nobody\swoole\web {
     function call_user_func_array(...$params)
     {
         return \nobody\swoole\call_user_func_array(...$params);
