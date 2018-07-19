@@ -14,7 +14,7 @@ use yii\base\InvalidParamException;
 /**
  * 协程模式下的session处理类
  *
- * @see \tsingsun\swoole\web\cm\SessionTrait 非协程下的引用的类
+ * @see \nobody\swoole\web\cm\SessionTrait 非协程下的引用的类
  * @package tsingsun\swoole\web
  */
 trait SessionTrait

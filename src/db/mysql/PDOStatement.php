@@ -20,7 +20,7 @@ class PDOStatement extends \PDOStatement
     }
 
     /**
-     * @var \tsingsun\swoole\db\mysql\PDO
+     * @var \nobody\swoole\db\mysql\PDO
      */
     private $pdo;
     private $sql;

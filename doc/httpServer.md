@@ -32,7 +32,7 @@ $config = require(__DIR__ . '/../config/swoole.php');
 
 \nobody\swoole\server\Server::run($config,function ($nodeConfig){
     $server = \nobody\swoole\server\Server::autoCreate($nodeConfig);
-    $starter = new \tsingsun\swoole\bootstrap\YiiWeb($server);
+    $starter = new \nobody\swoole\bootstrap\YiiWeb($server);
     //初始化函数独立,为了在启动时,不会加载Yii相关的文件,在库更新时采用reload平滑启动服务器
     $starter->init = function ($bootstrap) {
         require(__DIR__ . '/../../vendor/yiisoft/yii2/Yii.php');

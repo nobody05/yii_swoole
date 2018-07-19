@@ -117,7 +117,7 @@ abstract class BaseBootstrap implements BootstrapInterface
             Yii::$container = new ContainerDecorator();
             Yii::$context = new Context();
         } else {
-            self::$container = new \tsingsun\swoole\di\cm\Container();
+            self::$container = new \nobody\swoole\di\cm\Container();
             Yii::$container = self::$container;
         }
         //由于logger为全局变量,但容器被设置为上下文相关,导致出现logger类在某些情况下无协程ID导致无法初始化问题

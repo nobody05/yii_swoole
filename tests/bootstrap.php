@@ -24,11 +24,11 @@ Yii::setAlias('@tsingsun/swoole', __DIR__ . '/../src/');
 //Yii::setAlias('@app', __DIR__ . '/../');
 Yii::setAlias('@yiiunit/extension/swoole', __DIR__ . '/');
 if (COROUTINE_ENV) {
-    Yii::$container = new \tsingsun\swoole\di\ContainerDecorator();
-    Yii::$context = new \tsingsun\swoole\di\Context();
-    Yii::$context->setContainer(new \tsingsun\swoole\di\Container());
+    Yii::$container = new \nobody\swoole\di\ContainerDecorator();
+    Yii::$context = new \nobody\swoole\di\Context();
+    Yii::$context->setContainer(new \nobody\swoole\di\Container());
 
 } else {
-    Yii::$container = new \tsingsun\swoole\di\cm\Container();
+    Yii::$container = new \nobody\swoole\di\cm\Container();
 }
 require_once(__DIR__ . '/TestCase.php');

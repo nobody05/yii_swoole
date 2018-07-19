@@ -57,9 +57,9 @@ $config = [
 ];
 
 Server::run($config,function (Server $server){
-    $starter = new \tsingsun\swoole\bootstrap\WebApp($server);
+    $starter = new \nobody\swoole\bootstrap\WebApp($server);
     //初始化函数独立,为了在启动时,不会加载Yii相关的文件,在库更新时采用reload平滑启动服务器
-    $starter->init = function (\tsingsun\swoole\bootstrap\BaseBootstrap $bootstrap) {
+    $starter->init = function (\nobody\swoole\bootstrap\BaseBootstrap $bootstrap) {
         //需要使用Yii-Swoole项目的Yii文件,
         require(__DIR__ . '/vendor/yii2-swoole/src/Yii.php');
         //原项目的配置文件引入

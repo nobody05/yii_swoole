@@ -42,7 +42,7 @@ class Server
      */
     public $timeout = 0;
     /**
-     * @var \tsingsun\swoole\bootstrap\BootstrapInterface
+     * @var \nobody\swoole\bootstrap\BootstrapInterface
      */
     public $bootstrap;
     /**

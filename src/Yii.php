@@ -11,7 +11,7 @@ require(__DIR__ . '/BaseYii.php');
     require(__DIR__ . '/functionReplace.php');
 }*/
 
-class Yii extends \tsingsun\swoole\BaseYii
+class Yii extends \nobody\swoole\BaseYii
 {
 
 }
