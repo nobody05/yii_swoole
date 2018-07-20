@@ -63,7 +63,7 @@ class Server
      */
     public $setting = [];
 
-    public static $log;
+    public $log;
 
     public function __construct(array $config = [])
     {

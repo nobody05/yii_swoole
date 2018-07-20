@@ -6,7 +6,7 @@
  * Time: 下午5:27
  */
 
-namespace tsingsun\swoole;
+namespace nobody\swoole;
 
 class BaseYii extends \yii\BaseYii
 {

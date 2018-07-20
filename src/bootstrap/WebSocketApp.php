@@ -157,20 +157,63 @@ class WebSocketApp extends WebApp
         file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__. PHP_EOL, FILE_APPEND);
 
         $this->parseFrameProtocol($frame);
+        // 需要异步执行的任务
+        if (in_array($this->dataRoute, $this->tasks)) {
+            
+            $ws->task($frame);
+
+            // 默认返回成功
+            $ws->push($frame->fd, $this->formatResponse(['code'=>200, 'msg'=>'ok', 'action'=>$this->dataRoute]));
+
+        } else {
+            // 同步执行
+            // 这个地方都传了null
+            // 原方法onRequest跟swoole的onRequest重名了
+            $data = $this->onRequests(null, null);
+
+            // 程序中返回数组  format为json
+            $ws->push($frame->fd, $this->formatResponse($data));
+        }
+    }
+
+    /**
+     * task异步任务
+     * [onTask description]
+     * @param  [type] $ws        [description]
+     * @param  [type] $task_id   [description]
+     * @param  [type] $worker_id [description]
+     * @param  [type] $data      [description]
+     * @return [type]            [description]
+     */
+    public function onTask($ws, $task_id, $worker_id, $frame)
+    {
+        $this->server->log->info(__METHOD__);
+
+        $this->parseFrameProtocol($frame);
 
         // 这个地方都传了null
         // 原方法onRequest跟swoole的onRequest重名了
-        $data = $this->onRequests(null, null);
+        $res = $this->onRequests(null, null);
 
         // 程序中返回数组  format为json
-        $ws->push($frame->fd, $this->formatResponse($data));
+        // 测试
+        // task任务不需要返回了
+        // $ws->push($frame->fd, $this->formatResponse($res));
+
+        return 'ok';
+    }
+
+    public function onFinish($ws, $task_id, $data)
+    {
+        // file_put_contents(PROJECTROOT. '/runtime/logs/yiidebug.log', __METHOD__ . PHP_EOL, FILE_APPEND);
+
     }
 
     public function onClose(Server $ws, $fd)
     {
         if (isset($this->routes[$fd])) {
             $this->dataRoute = $this->routes[$fd] . '/close';
-            $this->onRequest(null, null);
+            // $this->onRequest(null, null);
             unset($this->routes[$fd]);
         }
     }
